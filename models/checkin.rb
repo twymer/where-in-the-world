@@ -7,4 +7,25 @@ class Checkin
   property :lat, Float
   property :lng, Float
   belongs_to :person
+
+  before :save, :set_geo_name
+
+  def set_geo_name
+    params = {
+      username: ENV['GEO_USERNAME'],
+      password: ENV['GEO_PASSWORD'],
+      type: 'json',
+      maxRows: '1',
+      q: message
+    }
+
+    response = HTTParty.get("http://api.geonames.org/searchJSON", query: params)
+    json = JSON.parse(response.body)
+    location = json['geonames'].first
+
+    if location
+      self.lat = location['lat']
+      self.lng = location['lng']
+    end
+  end
 end

@@ -3,5 +3,6 @@
 <% @checkins.each do |checkin| %>
   <li class="checkin">
     <%= checkin.person.email %> said "<%= checkin.message %>"
+    <% if checkin.lat %> at <%= checkin.lat %>, <%= checkin.lng %><% end %>
   </li>
 <% end %>

@@ -2,6 +2,7 @@
   <% @person.checkins.each do |checkin| %>
     <li class="checkin">
       "<%= checkin.message %>" at <%= checkin.timestamp.strftime("%I:%M%p on %m/%d/%y") %>
+      <% if checkin.lat %> at <%= checkin.lat %>, <%= checkin.lng %><% end %>
     </li>
   <% end %>
 </ul>
