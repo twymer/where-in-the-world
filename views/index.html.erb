@@ -1,1 +1,7 @@
 <h1>Hello!</h1>
+
+<% @checkins.each do |checkin| %>
+  <li class="checkin">
+    <%= checkin.person.email %> said "<%= checkin.message %>"
+  </li>
+<% end %>
