@@ -1,0 +1,7 @@
+<ul>
+  <% @person.checkins.each do |checkin| %>
+    <li class="checkin">
+      "<%= checkin.message %>" at <%= checkin.timestamp.strftime("%I:%M%p on %m/%d/%y") %>
+    </li>
+  <% end %>
+</ul>

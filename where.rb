@@ -1,11 +1,11 @@
 class App < Sinatra::Base
   get '/' do
     @checkins = Checkin.all
-    erb :'index.html'
+    erb :index
   end
 
   get '/checkin' do
-    erb :'checkin/new.html'
+    erb :'checkin/new'
   end
 
   post '/checkin' do
@@ -21,5 +21,17 @@ class App < Sinatra::Base
     if checkin.save
       redirect '/'
     end
+  end
+
+  get '/people' do
+    @people = Person.all
+
+    erb :'people/index'
+  end
+
+  get '/people/:id' do
+    @person = Person.get(params[:id])
+
+    erb :'people/show'
   end
 end
