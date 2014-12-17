@@ -3,6 +3,8 @@ $(function () {
 
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
+  var oms = new OverlappingMarkerSpiderfier(map);
+
   $(".checkin").each(function () {
     var imageIcon = L.icon({
       iconUrl: $(this).data('icon-url'),
@@ -11,10 +13,12 @@ $(function () {
     });
 
     if ($(this).data('lat') && $(this).data('lng')) {
-      L.marker(
+      var marker = L.marker(
         [$(this).data('lat'), $(this).data('lng')],
         {icon: imageIcon}
-      ).addTo(map);
+      )
+      marker.addTo(map);
+      oms.addMarker(marker);
     }
   });
 });
