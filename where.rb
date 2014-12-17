@@ -1,6 +1,6 @@
 class App < Sinatra::Base
   get '/' do
-    @checkins = Checkin.all
+    @checkins = Checkin.get_current_checkins
     erb :index
   end
 

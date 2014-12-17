@@ -28,4 +28,14 @@ class Checkin
       self.lng = location['lng']
     end
   end
+
+  def self.get_current_checkins
+    # this should be replaced with a proper
+    # manual sql statement, but is hacked
+    # for now so that I can do more fun things
+    # with my free time
+    return Person.all.map do |person|
+      person.checkins.last
+    end
+  end
 end
