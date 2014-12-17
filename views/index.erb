@@ -8,7 +8,11 @@
 
 <ul>
   <% @checkins.each do |checkin| %>
-    <li class="checkin" data-lat=<%= checkin.lat %> data-lng=<%= checkin.lng %>>
+    <li class="checkin"
+        data-lat=<%= checkin.lat %>
+        data-lng=<%= checkin.lng %>
+        data-icon-url=<%= checkin.person.icon_url %>
+    >
       <a href="/people/<%= checkin.person.id %>"><%= checkin.person.email %></a>
       said "<%= checkin.message %>"
       <% if checkin.lat %> at <%= checkin.lat %>, <%= checkin.lng %><% end %>
