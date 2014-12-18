@@ -4,13 +4,4 @@
 <script src="/js/leaflet.min.js"></script>
 <script src="/js/map.js"></script>
 
-<div id="map"></div>
-
-<ul>
-  <% @person.checkins.each do |checkin| %>
-    <li class="checkin" data-lat=<%= checkin.lat %> data-lng=<%= checkin.lng %>>
-      "<%= checkin.message %>" at <%= checkin.timestamp.strftime("%I:%M%p on %m/%d/%y") %>
-      <% if checkin.lat %> at <%= checkin.lat %>, <%= checkin.lng %><% end %>
-    </li>
-  <% end %>
-</ul>
+<h1>Nothing to see here, move along!</h1>

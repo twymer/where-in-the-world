@@ -1,6 +1,6 @@
 class App < Sinatra::Base
   get '/' do
-    @checkins = Checkin.get_current_checkins
+    @people = Person.get_serialized_data
     erb :index
   end
 
