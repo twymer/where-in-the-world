@@ -1,3 +1,7 @@
 #map {
   height: 680px;
 }
+
+form .form-group .input-group .glyphicon {
+  top: 0;
+}

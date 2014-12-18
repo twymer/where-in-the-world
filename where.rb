@@ -19,7 +19,14 @@ class App < Sinatra::Base
     checkin = person.checkins.new(data)
 
     if checkin.save
-      redirect '/'
+      if request.xhr?
+        {
+          lat: checkin.lat,
+          lng: checkin.lng
+        }.to_json
+      else
+        redirect '/'
+      end
     end
   end
 
