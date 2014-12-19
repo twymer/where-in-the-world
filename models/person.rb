@@ -6,9 +6,10 @@ class Person
   property :title, String
   has n, :checkins
 
-  def icon_url
+  def icon_url(size=nil)
+    size = size || 30
     md5 = Digest::MD5.hexdigest(self.email)
-    "http://www.gravatar.com/avatar/#{md5}?s=30"
+    "http://www.gravatar.com/avatar/#{md5}?s=#{size}"
   end
 
   def self.get_serialized_data

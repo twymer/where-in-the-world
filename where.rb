@@ -32,13 +32,11 @@ class App < Sinatra::Base
 
   get '/people' do
     @people = Person.all
-
     erb :'people/index'
   end
 
   get '/people/:id' do
     @person = Person.get(params[:id])
-
     erb :'people/show'
   end
 end

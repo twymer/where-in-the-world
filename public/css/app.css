@@ -2,6 +2,11 @@
   height: 680px;
 }
 
+#map.small {
+  height: 340px;
+  width: 50%;
+}
+
 form .form-group .input-group .glyphicon {
   top: 0;
 }
