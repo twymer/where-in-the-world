@@ -30,6 +30,11 @@ class App < Sinatra::Base
     end
   end
 
+  get '/checkin/:id/delete' do
+    Checkin.get(params[:id]).destroy
+    redirect request.env['HTTP_REFERER']
+  end
+
   get '/people' do
     @people = Person.all
     erb :'people/index'

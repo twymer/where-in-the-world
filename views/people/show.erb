@@ -21,3 +21,12 @@
 <img src=<%= @person.icon_url(280) %> />
 
 <div id='map' class='small'></div>
+
+<ul>
+  <% @person.checkins.each do |checkin| %>
+    <li>
+      <%= checkin.message %> at <%= checkin.timestamp %>
+      <a href="/checkin/<%= checkin.id %>/delete">Remove this checkin</a>
+    </li>
+  <% end %>
+</ul>
