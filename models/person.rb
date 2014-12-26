@@ -18,14 +18,16 @@ class Person
     # as the value
     people = {}
     Person.all.each do |person|
-      people[person.email] = {
-        icon_url: person.icon_url,
-        total_checkins: person.checkins.count,
-        lat: person.checkins.last.lat,
-        lng: person.checkins.last.lng,
-        message: person.checkins.last.message,
-        timestamp: person.checkins.last.timestamp,
-      }
+      if not person.checkins.empty?
+        people[person.email] = {
+          icon_url: person.icon_url,
+          total_checkins: person.checkins.count,
+          lat: person.checkins.last.lat,
+          lng: person.checkins.last.lng,
+          message: person.checkins.last.message,
+          timestamp: person.checkins.last.timestamp,
+        }
+      end
     end
     people.to_json
   end
