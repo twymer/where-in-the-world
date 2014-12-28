@@ -27,12 +27,19 @@ $(function () {
   $('#location-button').click(function (e) {
     e.preventDefault();
 
-    function updateFromGeoLocation(position) {
+    function geoSuccess(position) {
       coords = position.coords.latitude.toString();
       coords += ', ';
       coords += position.coords.longitude.toString();
       $('#location-input').val(coords);
+
     }
+
+    function geoError(err) {
+      alert("Something went wrong while getting your geo location. Did you reject us? Is your internet not working?");
+    }
+
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
 
     if (Modernizr.geolocation) {
       navigator.geolocation.getCurrentPosition(updateFromGeoLocation);
